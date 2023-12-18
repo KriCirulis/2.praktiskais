@@ -1,3 +1,4 @@
+from venv import logger
 import requests
 import json
 import datetime
@@ -10,16 +11,17 @@ print('Asteroid processing service')
 
 # Initiating and reading config values
 print('Loading configuration from file')
-try:
-                config = ConfigParser()
-                config.read('config.ini')
 
-                nasa_api_key = config.get('nasa', 'api_key')
-                nasa_api_url = config.get('nasa', 'api_url')
+try:
+    config = ConfigParser()
+    config.read('config.ini')
+
+    nasa_api_key = config.get('nasa', 'api_key')
+    nasa_api_url = config.get('nasa', 'api_url')
 
 except:
-                logger.exception('')
-        logger.info('DONE')
+    logger.exception('')
+logger.info('DONE')
 
 # Getting todays date
 dt = datetime.now()
